@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Experiment 1</title>
     <style>
+
+.gradient-background {
+            height: 100vh;
+            background: linear-gradient(to right, #0000FF, #00FF00); /* Blue to Green */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
         {
             margin: 0;
             padding: 0;
@@ -76,5 +92,8 @@
         <div class="flex-item">box box box box</div>
         <div class="flex-item">box box box box</div>
         <div class="flex-item">box box box box</div>
+        <div class="gradient-background">
+            <div class="text">CHEESE</div>
+        </div>
 </body>
 </html>
