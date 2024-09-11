@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Experiment 1</title>
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box{
+            position:relative;
+            width: 400px;
+            height: 400px;
+            background-color: rgb(240, 240, 105);
+            border: 10px dotted rgb(221, 102, 102); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border box;
+}
+
+
+.flex-container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between; 
+}
+
+.flex-item {
+  background-color: rgb(200, 132, 240);
+  color: white;
+  padding 20px;
+  margin: 100px;
+  text-align: center;
+  flex: 1;
+}
+
+
+.typeset1 {
+    font-family:'Times New Roman', Times, serif;
+    color:rgb(204, 54, 54);
+    text-align: center;
+}
+
+.typeset2 {
+    color:white;
+    background-color: rgb(76, 158, 76); 
+    padding: 300px;
+    margin: 20px;
+    border-radius: 5px;
+
+}
+
+.typeset3 {
+    background-color: linear-gradient(90deg,yellow, blue);
+    font-size: 80px;
+    letter-spacing:40px;
+    text-shadow: 10px black;
+}
+    </style>
+</head>
+<body>
+    <div class="typeset1">meow meow meow meow meow.</div>
+    <div class="typeset2">MEOW MEOW MEOW</div>
+    <div class="typeset3">MEOW</div>
+    <div class="box">I am writing in a box!</div>
+    <div class="flex-containter">
+        <div class="flex-item">box box box box</div>
+        <div class="flex-item">box box box box</div>
+        <div class="flex-item">box box box box</div>
+</body>
+</html>
