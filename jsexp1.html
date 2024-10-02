@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gothic Interactive Button</title>
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden; /* Prevent scrollbars */
+                background-color: #f0f0f0;
+            }
+    
+            #bouncingImage {
+                position: absolute;
+                width: 100px; /* Adjust image size as needed */
+                height: auto;
+            }
+        </style>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background: #1c1c1c;
+                font-family: 'Gothic A1', sans-serif;
+                color: #fff;
+            }
+    
+            .container {
+                text-align: center;
+            }
+    
+            .button {
+                padding: 15px 40px;
+                font-size: 24px;
+                color: #fff;
+                background: #4B0082; /* Indigo */
+                border: 2px solid #fff;
+                border-radius: 50px;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.4s, box-shadow 0.4s;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            }
+    
+            .button::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 300%;
+                height: 300%;
+                background: rgba(255, 0, 0, 0.4); /* Red */
+                border-radius: 50%;
+                transition: transform 0.5s;
+                transform: translate(-50%, -50%) scale(0);
+                z-index: 0;
+            }
+    
+            .button:hover::before {
+                transform: translate(-50%, -50%) scale(1);
+            }
+    
+            .button:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            }
+    
+            .hidden-image {
+                display: none;
+                margin-top: 20px;
+                width: 300px;
+                border: 5px solid #fff;
+                border-radius: 10px;
+                transition: opacity 0.5s;
+                opacity: 0;
+            }
+    
+            .hidden-image.show {
+                display: block;
+                opacity: 1;
+            }
+        </style>
+</head>
+<body>
+    <img id="bouncingImage" src="https://purepng.com/public/uploads/large/purepng.com-skullskullvertebratesfacehuman-skull-1421526968219gpljr.png" alt="Bouncing Image">
+
+    <script>
+        const image = document.getElementById('bouncingImage');
+        let posX = Math.random() * window.innerWidth;
+        let posY = Math.random() * window.innerHeight;
+        let velocityX = 2; // Horizontal speed
+        let velocityY = 2; // Vertical speed
+
+        function updatePosition() {
+            posX += velocityX;
+            posY += velocityY;
+
+            // Bounce off the edges
+            if (posX + image.clientWidth >= window.innerWidth || posX <= 0) {
+                velocityX = -velocityX; // Reverse direction
+            }
+            if (posY + image.clientHeight >= window.innerHeight || posY <= 0) {
+                velocityY = -velocityY; // Reverse direction
+            }
+
+            // Update image position
+            image.style.left = `${posX}px`;
+            image.style.top = `${posY}px`;
+
+            requestAnimationFrame(updatePosition); // Continue animation
+        }
+
+        // Start the animation
+        updatePosition();
+    </script>
+    <div class="container">
+        <button class="button" onclick="showImage()">Unveil the Secret</button>
+        <img class="hidden-image" id="hiddenImage" src="https://i.pinimg.com/originals/c4/ae/bc/c4aebc47d5704e660e33709002bbee5d.gif" alt="Hidden Gothic Image">
+    </div>
+
+    <script>
+        function showImage() {
+            const image = document.getElementById('hiddenImage');
+            image.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
