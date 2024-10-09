@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        #canvas {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .trail {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none; /* Prevent interaction */
+        }
+        .instruction {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #333;
+        }
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+    }
+    #canvas {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+    }
+    .trail {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+    <div id="canvas">
+        <div class="instruction">Click and drag mouse to leave a colorful trail!</div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const colors = ['red', 'blue', 'green', 'orange', 'purple'];
+    
+            // Create a trail that follows the mouse
+            $('#canvas').on('mousemove', function(e) {
+                if (e.buttons) { // If mouse is held down
+                    createTrail(e.pageX, e.pageY);
+                }
+            });
+    
+            // Function to create trail
+            function createTrail(x, y) {
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const trail = $('<div class="trail"></div>').css({
+                    left: x - 5,
+                    top: y - 5,
+                    backgroundColor: color
+                }).appendTo('#canvas');
+    
+                // Fade out and remove trail after a short duration
+                trail.animate({ opacity: 0 }, 1000, function() {
+                    $(this).remove();
+                });
+            }
+        });
+    </script>
+    
+    <div id="canvas"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function() {
+        const colors = ['red', 'blue', 'green', 'orange', 'purple'];
+
+        // Create a trail on click
+        $('#canvas').on('click', function(e) {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            createTrail(e.pageX, e.pageY, color);
+        });
+
+        // Create a trail function
+        function createTrail(x, y, color) {
+            const trail = $('<div class="trail"></div>').css({
+                left: x - 10,
+                top: y - 10,
+                backgroundColor: color
+            }).appendTo('#canvas').draggable();
+
+            // Leave trail on hover
+            trail.hover(function() {
+                $(this).css('opacity', 0.7);
+            }, function() {
+                $(this).css('opacity', 1);
+            });
+        }
+
+        // Leave a trail on mouse move
+        $('#canvas').on('mousemove', function(e) {
+            if (e.buttons) { // If mouse is held down
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                createTrail(e.pageX, e.pageY, color);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
