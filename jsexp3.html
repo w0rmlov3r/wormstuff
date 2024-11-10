@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        transition: background-color 0.5s ease;
+    }
+    .key-display {
+        font-size: 2em;
+        padding: 20px;
+        margin-top: 20px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        width: 300px;
+        margin: 0 auto;
+    }
+    .action-message {
+        margin-top: 20px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+</style>
+<body>
+  
+    <h1>Press any key on your keyboard!</h1>
+    <div id="key-display" class="key-display">
+        Waiting for key press...
+    </div>
+    <div id="action-message" class="action-message">
+        No action yet.
+    </div>
+
+    <script>
+        // Function to handle key presses
+        function handleKeyPress(event) {
+            const key = event.key;  // Get the pressed key
+            const keyDisplay = document.getElementById('key-display');
+            const actionMessage = document.getElementById('action-message');
+
+            // Display the key that was pressed
+            keyDisplay.textContent = `You pressed: ${key}`;
+
+            // Perform an action based on the key pressed
+            switch (key.toLowerCase()) {
+                case 'r': // If 'r' is pressed, change background to red
+                    document.body.style.backgroundColor = '#ff6347';
+                    actionMessage.textContent = 'Red mode activated!';
+                    break;
+                case 'g': // If 'g' is pressed, change background to green
+                    document.body.style.backgroundColor = '#32cd32';
+                    actionMessage.textContent = 'Green mode activated!';
+                    break;
+                case 'b': // If 'b' is pressed, change background to blue
+                    document.body.style.backgroundColor = '#1e90ff';
+                    actionMessage.textContent = 'Blue mode activated!';
+                    break;
+                case 'y': // If 'y' is pressed, change background to yellow
+                    document.body.style.backgroundColor = '#ffff00';
+                    actionMessage.textContent = 'Yellow mode activated!';
+                    break;
+                default: // For any other key, reset to default background and message
+                    document.body.style.backgroundColor = '#f0f0f0';
+                    actionMessage.textContent = 'No special action for this key.';
+                    break;
+            }
+        }
+
+        // Attach the event listener for key press
+        window.addEventListener('keydown', handleKeyPress);
+    </script>
+</body>
+</html>
